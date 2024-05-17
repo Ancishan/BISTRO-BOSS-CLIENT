@@ -5,7 +5,7 @@ const Navbar = () => {
    <Link to='/'  className="text-yellow-700 pr-2 font-bold text-xl">HOME</Link>
    <Link to='/contact' className="text-yellow-700 pr-2 font-bold text-xl">CONTACT US</Link>
    <Link to='/dashboard' className="text-yellow-700 pr-2 font-bold text-xl">DASHBOARD</Link>
-   <Link to='/ourshop' className="text-yellow-700 pr-2 font-bold text-xl">OUR SHOP</Link>
+   <Link to='/ourshop/Salad' className="text-yellow-700 pr-2 font-bold text-xl">OUR SHOP</Link>
    <Link to='/menu' className="text-yellow-700 font-bold text-xl">MENU</Link>
     
     </>

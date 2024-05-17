@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Cover from "./Cover/Cover";
 import MenuItem from "./MenuItem";
+import { Link } from 'react-router-dom';
 
 const MenuCategory = ({ items = [], title, coverImg }) => {
     return (
@@ -15,6 +16,12 @@ const MenuCategory = ({ items = [], title, coverImg }) => {
                     <p>No items available</p>
                 )}
             </div>
+            <div className=' flex justify-center pb-4 '>
+                <Link to={`/ourshop/${title}`}>
+                    <button className="btn btn-outline border-0 border-b-4">Order Your Favorite Food</button>
+                </Link>
+            </div>
+
         </div>
     );
 };
