@@ -8,6 +8,8 @@ import ContactUs from "../Page/Path/ContactUs";
 import DashBoard from "../Page/Path/DashBoard";
 import OurShop from "../Page/Path/OurShop";
 import Menu from "../Page/Path/Menu";
+import Login from "../Page/Authentication/Login";
+import SignUp from "../Page/Authentication/SignUp";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +35,14 @@ export const router = createBrowserRouter([
         {
           path:'/menu',
           element:<Menu></Menu>
+        },
+        {
+          path:'/login',
+          element:<Login></Login>,
+        },
+        {
+          path:'/signup',
+          element: <SignUp></SignUp>,
         }
       ]
     },
