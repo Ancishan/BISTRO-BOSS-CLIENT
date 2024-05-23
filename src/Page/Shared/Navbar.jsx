@@ -18,7 +18,7 @@ const Navbar = () => {
         <Link to='/dashboard' className="text-yellow-700 pr-4 font-bold text-xl">DASHBOARD</Link>
         <Link to='/ourshop/Salad' className="text-yellow-700 pr-4 font-bold text-xl">OUR SHOP</Link>
         <li>
-            <Link to='/' className="">
+            <Link to='/dashboard' className="">
                 <button className="btn btn-ghost -p-4 -mt-4 text-2xl">
                 <BsFillCartPlusFill />
                     <div className="">+{cart.length}</div>

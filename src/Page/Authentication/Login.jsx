@@ -4,6 +4,7 @@ import { AuthContext } from '../../Routes/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
+import SocialLogin from '../../Component/SocialLogin/SocialLogin';
 const Login = () => {
   const captchaRef = useRef(null)
   const navigate = useNavigate();
@@ -52,6 +53,8 @@ const Login = () => {
        navigate(from, {replace: true});
       })
   }
+
+  
 
   const handleValidateCaptcha = (e) => {
     const user_captcha_value = e.target.value;
@@ -103,9 +106,11 @@ const Login = () => {
                 <input disabled={disabled} className="btn btn-primary" type="submit" value='LogIn' />
               </div>
             </form>
+            <SocialLogin></SocialLogin>
             <p className='flex justify-center pb-5'><small>New Here ? <Link to='/signup'>Create an Account</Link></small></p>
           </div>
         </div>
+       
       </div>
     </div>
   );

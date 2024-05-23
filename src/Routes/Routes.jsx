@@ -5,11 +5,16 @@ import {
 import Main from "../Layout/Main";
 import Home from "../Page/Home/Home";
 import ContactUs from "../Page/Path/ContactUs";
-import DashBoard from "../Page/Path/DashBoard";
 import OurShop from "../Page/Path/OurShop";
 import Menu from "../Page/Path/Menu";
 import Login from "../Page/Authentication/Login";
 import SignUp from "../Page/Authentication/SignUp";
+import DashBoard from "../Layout/DashBoard";
+import Cart from "../Page/DashBoard/Cart";
+import PrivateRoute from "./PrivateRoute";
+import AllUsers from "../Page/DashBoard/AllUsers";
+
+
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +48,22 @@ export const router = createBrowserRouter([
         {
           path:'/signup',
           element: <SignUp></SignUp>,
+        }
+      ]
+    },
+
+    {
+      path:'dashboard',
+      element: <PrivateRoute> <DashBoard></DashBoard></PrivateRoute>,
+      children:[
+        {
+          path: 'cart',
+          element: <Cart></Cart>
+        },
+        // Admin routes
+        {
+          path: 'allUsers',
+          element: <AllUsers></AllUsers>
         }
       ]
     },

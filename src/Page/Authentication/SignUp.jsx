@@ -4,21 +4,30 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Routes/AuthProvider";
 import Swal from 'sweetalert2'
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SignUp = () => {
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate()
     const onSubmit = (data) => {
-        console.log(data)
+       
         createUser(data.email, data.password)
             .then(result => {
                 // const loggedUser = result.user;
                 console.log(result)
                 updateUserProfile(data.name, data.photoURL)
                 .then(() =>{
-                    console.log('user profile info update')
-                    reset();
+                //    create user entry in the database
+                const userInfo = {
+                    name: data.name,
+                    email:data.email
+                }
+                axiosPublic.post('/users', userInfo)
+                .then(res => {
+                    if(res.data.insertedId){
+                        reset();
                     Swal.fire({
                         title: "Successfully Login",
                         showClass: {
@@ -37,6 +46,9 @@ const SignUp = () => {
                         }
                       });
                       navigate('/');
+                    }
+                })
+                    
                 })
                 .catch(error => console.log(error))
             })

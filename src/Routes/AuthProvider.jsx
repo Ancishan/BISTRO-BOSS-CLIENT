@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, GithubAuthProvider, onAuthStateChanged, signInWithPopup, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase.config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 
 export const AuthContext = createContext(null); //1st step
@@ -11,6 +12,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [darkMode, setDarkMode] = useState(false); // State for dark mode
+    const axiosPublic = useAxiosPublic()
 
     const createUser = (email, password, photoURL, name) => {
         setLoading(true);
@@ -49,14 +51,27 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('user in the auth state changed', currentUser);
             setUser(currentUser);
+            if(currentUser){
+                // get token and store client
+                const userInfo = {email: currentUser.email};
+                axiosPublic.post('/jwt',userInfo )
+                .then(res =>{
+                    if(res.data.token){
+                        localStorage.setItem('access-token', res.data.token);
+                    }
+                })
+            }
+            else{
+                // do something remove token (if token stored int he client side: lcoalStorage, cahing, in memory)
+                localStorage.removeItem('access-token');
+            }
             setLoading(false);
         });
         return () => {
             unSubscribe();
         }
-    }, []);
+    }, [axiosPublic]);
 
     // Function to toggle dark mode
     const toggleDarkMode = () => {
