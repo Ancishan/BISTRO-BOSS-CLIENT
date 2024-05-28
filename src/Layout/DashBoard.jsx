@@ -56,6 +56,7 @@ const DashBoard = () => {
                         </NavLink>
                     </li>
                 </> :
+                // user dashboard
                 <>
                  <li>
                         <NavLink to='/dashboard/userhome'>
@@ -74,6 +75,12 @@ const DashBoard = () => {
                         <NavLink to='/dashboard/reservation'>
                             <FaAd></FaAd>
                            Reserveration
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard/paymentHistory'>
+                            <FaAd></FaAd>
+                           Payment History
                         </NavLink>
                     </li>
                     <li>
