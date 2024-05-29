@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Routes/AuthProvider";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import useCart from "../../Hooks/useCart";
+import useAdmin from "../../Hooks/useAdmin";
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
     const [cart] = useCart();
     const handleLogOut = () => {
         logOut()
@@ -15,8 +17,13 @@ const Navbar = () => {
         <Link to='/' className="text-yellow-700 pr-4 font-bold text-xl">HOME</Link>
         <Link to='/menu' className="text-yellow-700 pr-4 font-bold text-xl">MENU</Link>
         <Link to='/contact' className="text-yellow-700 pr-4 font-bold text-xl">CONTACT US</Link>
-        <Link to='/dashboard' className="text-yellow-700 pr-4 font-bold text-xl">DASHBOARD</Link>
         <Link to='/ourshop/Salad' className="text-yellow-700 pr-4 font-bold text-xl">OUR SHOP</Link>
+        {
+            user && isAdmin && <Link to='/dashboard/adminhome' className="text-yellow-700 pr-4 font-bold text-xl">DASHBOARD</Link>
+        }
+        {
+            user && !isAdmin && <Link to='/dashboard/userhome' className="text-yellow-700 pr-4 font-bold text-xl">DASHBOARD</Link>
+        }
         <li>
             <Link to='/dashboard' className="">
                 <button className="btn btn-ghost -p-4 -mt-4 text-2xl">
