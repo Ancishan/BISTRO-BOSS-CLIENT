@@ -12,5 +12,9 @@
 - **Sweet Alert 2**: `npm install react-sweetalert2`
 - **React Toastify**: `npm install react-toastify`
 
-#project Goal: In my project, it is shown how a food delivery system works. A customer or user can view their preferred food items and place an order.
-#Live Server : https://b9-assignment10-client.web.app
+- **project Goal: In my project, it is shown how a food delivery system works. A customer or user can view their preferred food items and place an order.
+- ** Feature:
+  1.In my project, it is demonstrated with an agro farm.
+  2.The farm authorities post the animals they have on the site for sale.
+  3. Essentially, this is a site for purchasing animals from the farm.
+- **Live Server : https://b9-assignment10-client.web.app
