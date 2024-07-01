@@ -10,3 +10,4 @@
 8. **react-fast-marquee**: `npm install react-fast-marquee`
 
 #project Goal: In my project, it is shown how a food delivery system works. A customer or user can view their preferred food items and place an order.
+#Live Server : https://b9-assignment10-client.web.app
