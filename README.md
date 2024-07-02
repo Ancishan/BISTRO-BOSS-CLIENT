@@ -18,3 +18,7 @@
   2.The farm authorities post the animals they have on the site for sale.
   3. Essentially, this is a site for purchasing animals from the farm.
 - **Live Server : https://b9-assignment10-client.web.app
+- 
+- Running Local host:
+- npm Install
+- npm run dev
